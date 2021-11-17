@@ -1,4 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from "@angular/common/http";
+import { HerosService } from "./component/shared/heros.service"
+
 import { NgModule } from '@angular/core';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
@@ -38,6 +41,7 @@ import { IndexComponent } from './component/index/index.component';
 import { Config,configToken } from "./component/shared/config";
 import { Frm01Component } from './component/form/frm01/frm01.component';
 import { Frm02Component } from './component/form/frm02/frm02.component';
+import { Htp01Component } from './component/http/htp01/htp01.component';
 
 export const configVaue:Config= {
   apiEndPoint :"zzz.com",
@@ -137,6 +141,10 @@ const routes: Routes = [
     component: Frm02Component
   },
   {
+    path: 'htp01',
+    component: Htp01Component
+  },
+  {
     path: '**',
     component: NotfoundpageComponent
   }
@@ -174,10 +182,12 @@ const routes: Routes = [
     LoginComponent,
     IndexComponent,
     Frm01Component,
-    Frm02Component
+    Frm02Component,
+    Htp01Component
   ],
   imports: [
     BrowserModule,
+    HttpClientModule, //一定要放置在BrowserModule之后
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes, {
